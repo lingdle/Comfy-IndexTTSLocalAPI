@@ -2,6 +2,10 @@
 
 版本规则：每次改动都升版本号。修 bug / 文案 → patch；行为或默认值变化 → minor；破坏兼容 → major。
 
+## 1.0.1
+
+- Registry DisplayName 改为 `Comfy-IndexTTSLocalAPI`（1.0.0 发布时仍是「剧本配音 · Script Dubbing」，而版本号不可覆盖，只能发新版本）
+
 ## 1.0.0 — 首个公开版本
 
 **节点**

@@ -1,6 +1,6 @@
 [project]
 name = "Comfy-IndexTTSLocalAPI"
-version = "1.0.0"
+version = "1.0.1"
 description = "ComfyUI node for local IndexTTS: multi-role, multi-emotion script dubbing with frame-accurate subtitles"
 license = { file = "LICENSE" }
 requires-python = ">=3.9"
