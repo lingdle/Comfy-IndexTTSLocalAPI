@@ -2,6 +2,31 @@
 
 版本规则：每次改动都升版本号。修 bug / 文案 → patch；行为或默认值变化 → minor；破坏兼容 → major。
 
+## 1.0.0 — 首个公开版本
+
+**节点**
+- `剧本配音`（`IndexTTSLocalScriptDubbing`）：一份带段标的剧本 → 多角色、多情绪配音 + 段级精确字幕
+- `lang` 支持 ZH / EN / JA / ES / AR
+
+**段标语法**
+- `[@Rn]` / `[@Rn:情绪]`：必须顶格、只在行首生效、跨行成段
+- 情绪支持 8 维标签（中英别名、可带权重、可 + 组合）、自由描述（QwenEmotion）、跟随音色
+- 详见 `syntax-reference.md` / `语法速查手册.md` / `example-script.md`
+
+**执行与缓存**
+- 一段一次请求、严格串行；按 (seed + 内容指纹) 缓存到 `output/indextts-cache/<seed>/`
+- 失败段跳过 + 0.1 秒占位，所有输出按段索引对齐；`failed_segments` 给出完整原文与服务端错误
+
+**输入 / 输出**
+- 输入 11 个：text、ref_audio（Autogrow）、lang、gap_ms、intro_ms、subtitle_format、seed、emo_weight、duration_factor、cache_dir、base_url
+- 输出 7 个：segment_audios、merged_audio、subtitles、segment_list、voice_report、failed_segments、summary
+
+**内置音色**
+- R0 女声、R1 男声随包；R2–R9 首次使用时从 Release `voices-v1` 下载（sha256 校验）
+
+**其它**
+- 中英双语 i18n（`locales/`）、示例工作流、赞助小节
+
 ## 0.17.2
 
 - 内置音色包已发布：GitHub Release `voices-v1` 提供 `indextts-voices-8.zip`（8 个音色，4.77 MB）
