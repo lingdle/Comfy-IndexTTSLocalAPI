@@ -26,6 +26,7 @@
 
 **其它**
 - 中英双语 i18n（`locales/`）、示例工作流、赞助小节
+- Registry DisplayName 使用包名 `Comfy-IndexTTSLocalAPI`
 
 ## 0.17.2
 

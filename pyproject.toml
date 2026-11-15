@@ -14,6 +14,6 @@ Documentation = "https://github.com/lingdle/Comfy-IndexTTSLocalAPI#readme"
 
 [tool.comfy]
 PublisherId = "lingdle"
-DisplayName = "剧本配音 · Script Dubbing"
+DisplayName = "Comfy-IndexTTSLocalAPI"
 Icon = "https://raw.githubusercontent.com/lingdle/Comfy-IndexTTSLocalAPI/main/assets/icon.svg"
 Banner = "https://raw.githubusercontent.com/lingdle/Comfy-IndexTTSLocalAPI/main/assets/banner.svg"
