@@ -1,0 +1,25 @@
+# 草稿：设计/实测/运维笔记，只留本地，不进仓库
+draft/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv*/
+venv*/
+
+# 工具缓存
+.ruff_cache/
+.mypy_cache/
+.pytest_cache/
+
+# 构建与发布产物
+build/
+dist/
+*.zip
+
+# 编辑器 / 系统
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

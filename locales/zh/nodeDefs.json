@@ -1,0 +1,75 @@
+{
+  "IndexTTSLocalScriptDubbing": {
+    "display_name": "剧本配音",
+    "description": "一段带段标的剧本 → 多角色、多情绪配音 + 精确字幕。段标写作 [@R0]、[@R1:发狂嘶吼]，必须顶格、只在行首生效。",
+    "inputs": {
+      "text": {
+        "name": "text",
+        "tooltip": "带段标的剧本；默认值是覆盖全部语法的样例（17 段）。为空会报错"
+      },
+      "ref_audio": {
+        "name": "ref_audio",
+        "tooltip": "参考音色插口：第 1 个 = R0，第 2 个 = R1…；不接的槽位走内置角色"
+      },
+      "lang": {
+        "name": "lang",
+        "tooltip": "语种：决定分词与发音词典（不是翻译）。中英混排的稿子请选 ZH"
+      },
+      "gap_ms": {
+        "name": "gap_ms",
+        "tooltip": "合并时两段之间插入的静音毫秒数"
+      },
+      "intro_ms": {
+        "name": "intro_ms",
+        "tooltip": "合并轨最前面插入的静音毫秒数"
+      },
+      "subtitle_format": {
+        "name": "subtitle_format",
+        "tooltip": "字幕输出格式"
+      },
+      "seed": {
+        "name": "seed",
+        "tooltip": "版本号：同一 seed 复用缓存文件，换 seed 则全部重新合成"
+      },
+      "emo_weight": {
+        "name": "emo_weight",
+        "tooltip": "情绪权重（emo_alpha）：默认 0.65，与 WebUI 一致；实际强度 = 写的权重 × 上游偏置 × 该值"
+      },
+      "duration_factor": {
+        "name": "duration_factor",
+        "tooltip": "语速：0.5 更快更短，2.0 更慢更长；改动会让所有段重新合成"
+      },
+      "cache_dir": {
+        "name": "cache_dir",
+        "tooltip": "output 目录下的子目录名（可多级，如 my/tts）；绝对路径会被规整，最终一定在 ComfyUI 输出目录之下"
+      },
+      "base_url": {
+        "name": "base_url",
+        "tooltip": "IndexTTS WebUI 地址；只有端口不是 7860 时才需要改"
+      }
+    },
+    "outputs": {
+      "0": {
+        "tooltip": "分段配音：每段一条，长度 = 段数，空段/失败段为 0.1 秒静音"
+      },
+      "1": {
+        "tooltip": "合成配音：片头静音 + 各段 + 段间静音"
+      },
+      "2": {
+        "tooltip": "字幕：SRT 或 JSON，条数 = 段数，失败段占位"
+      },
+      "3": {
+        "tooltip": "分段明细：序号 / 状态 / 角色 / 情绪 / 起止 / 文本"
+      },
+      "4": {
+        "tooltip": "音色报告：每个角色实际用了用户的还是内置的"
+      },
+      "5": {
+        "tooltip": "失败段清单：段号 / 原文 / 服务端错误；全部成功时为空"
+      },
+      "6": {
+        "tooltip": "概要：段数 / 成功 / 失败 / 总时长 / 耗时 / RTF"
+      }
+    }
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "IndexTTSLocalScriptDubbing": {
+    "display_name": "Script Dubbing",
+    "description": "One marked-up script in, multi-role and multi-emotion dubbing plus frame-accurate subtitles out. Markers look like [@R0] or [@R1:raging]; they must start at column 0.",
+    "inputs": {
+      "text": {
+        "name": "text",
+        "tooltip": "Script with segment markers; the default is the 17-segment feature sample. Empty text raises an error"
+      },
+      "ref_audio": {
+        "name": "ref_audio",
+        "tooltip": "Reference-voice sockets: 1st = R0, 2nd = R1, …; unconnected slots fall back to built-in roles"
+      },
+      "lang": {
+        "name": "lang",
+        "tooltip": "Language: controls tokenization and the pronunciation dictionary (not translation). Use ZH for mixed Chinese/English scripts"
+      },
+      "gap_ms": {
+        "name": "gap_ms",
+        "tooltip": "Silence inserted between segments when merging (ms)"
+      },
+      "intro_ms": {
+        "name": "intro_ms",
+        "tooltip": "Silence inserted at the head of the merged track (ms)"
+      },
+      "subtitle_format": {
+        "name": "subtitle_format",
+        "tooltip": "Subtitle output format"
+      },
+      "seed": {
+        "name": "seed",
+        "tooltip": "Version number: the same seed reuses cached segment files; change it to regenerate everything"
+      },
+      "emo_weight": {
+        "name": "emo_weight",
+        "tooltip": "Emotion weight (emo_alpha): 0.65 by default, same as the WebUI; effective strength = written weight × upstream bias × this value"
+      },
+      "duration_factor": {
+        "name": "duration_factor",
+        "tooltip": "Speech rate: 0.5 faster and shorter, 2.0 slower and longer; changing it regenerates every segment"
+      },
+      "cache_dir": {
+        "name": "cache_dir",
+        "tooltip": "Subdirectory name under ComfyUI output (may be nested, e.g. my/tts); absolute paths are normalised so the cache always stays under the output directory"
+      },
+      "base_url": {
+        "name": "base_url",
+        "tooltip": "IndexTTS WebUI address; only change it when the port is not 7860"
+      }
+    },
+    "outputs": {
+      "0": {
+        "tooltip": "Segment dubbing: one clip per segment, length = segment count; empty/failed segments are 0.1s silence"
+      },
+      "1": {
+        "tooltip": "Merged dubbing: intro silence + segments + gaps"
+      },
+      "2": {
+        "tooltip": "Subtitles: SRT or JSON, one cue per segment, placeholders for failed segments"
+      },
+      "3": {
+        "tooltip": "Segment list: index / status / role / emotion / timing / text"
+      },
+      "4": {
+        "tooltip": "Voice report: whether each role used your reference audio or a built-in one"
+      },
+      "5": {
+        "tooltip": "Failed segments: index / text / server error; empty when everything succeeded"
+      },
+      "6": {
+        "tooltip": "Summary: segments / ok / failed / duration / elapsed / RTF"
+      }
+    }
+  }
+}

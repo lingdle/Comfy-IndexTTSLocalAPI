@@ -1,0 +1,53 @@
+{
+  "version": "v1",
+  "bundled": [
+    0,
+    1
+  ],
+  "archive": {
+    "url": "https://github.com/lingdle/Comfy-IndexTTSLocalAPI/releases/download/voices-v1/indextts-voices-8.zip",
+    "sha256": ""
+  },
+  "builtin": [
+    {
+      "id": 0,
+      "file": "voice_02.wav"
+    },
+    {
+      "id": 1,
+      "file": "voice_12.wav"
+    },
+    {
+      "id": 2,
+      "file": "voice_01.wav"
+    },
+    {
+      "id": 3,
+      "file": "voice_03.wav"
+    },
+    {
+      "id": 4,
+      "file": "voice_04.wav"
+    },
+    {
+      "id": 5,
+      "file": "voice_05.wav"
+    },
+    {
+      "id": 6,
+      "file": "voice_06.wav"
+    },
+    {
+      "id": 7,
+      "file": "voice_07.wav"
+    },
+    {
+      "id": 8,
+      "file": "voice_08.wav"
+    },
+    {
+      "id": 9,
+      "file": "voice_09.wav"
+    }
+  ]
+}

@@ -1,0 +1,1072 @@
+{
+ "spec": "段标规范 v0.5",
+ "builtin_count": 10,
+ "role_base": 0,
+ "emotion_keys": [
+  "happy",
+  "angry",
+  "sad",
+  "afraid",
+  "disgusted",
+  "melancholic",
+  "surprised",
+  "calm"
+ ],
+ "frozen_semantics": {
+  "trim": "冒号两侧空格 trim",
+  "empty_emotion": "等同 follow",
+  "eq_syntax": "开心=0.8 报错 EQ_SYNTAX",
+  "whitespace_only": "空段 + 警告 WHITESPACE_ONLY",
+  "inline_marker": "句中 [@ 不警告，按正文",
+  "label_match": "整段完全匹配标签式才走向量"
+ },
+ "behavioral_cases": {
+  "H": 7,
+  "I": 4,
+  "note": "H 需真实音频对象；I 需下载器假实现，另行覆盖"
+ },
+ "counts": {
+  "A": 8,
+  "B": 7,
+  "C": 12,
+  "D": 16,
+  "E": 6,
+  "F": 7,
+  "G": 3,
+  "J": 5
+ },
+ "cases": [
+  {
+   "id": "A1",
+   "group": "A",
+   "text": "今天天气不错。",
+   "expect": {
+    "segments": [
+     {
+      "role": 0,
+      "text": "今天天气不错。",
+      "emotion": "follow"
+     }
+    ]
+   },
+   "ref_audios": 0
+  },
+  {
+   "id": "A2",
+   "group": "A",
+   "text": "[@R0] 今天不错。",
+   "expect": {
+    "segments": [
+     {
+      "role": 0,
+      "text": " 今天不错。",
+      "emotion": "follow"
+     }
+    ]
+   },
+   "ref_audios": 0
+  },
+  {
+   "id": "A3",
+   "group": "A",
+   "text": "[@R0]\n第一行\n第二行",
+   "expect": {
+    "segments": [
+     {
+      "role": 0,
+      "text": "\n第一行\n第二行",
+      "emotion": "follow"
+     }
+    ]
+   },
+   "ref_audios": 0
+  },
+  {
+   "id": "A4",
+   "group": "A",
+   "text": "[@R0] 一\n[@R1] 二\n[@R2] 三",
+   "expect": {
+    "segments": [
+     {
+      "role": 0,
+      "text": " 一",
+      "emotion": "follow"
+     },
+     {
+      "role": 1,
+      "text": " 二",
+      "emotion": "follow"
+     },
+     {
+      "role": 2,
+      "text": " 三",
+      "emotion": "follow"
+     }
+    ]
+   },
+   "ref_audios": 0
+  },
+  {
+   "id": "A5",
+   "group": "A",
+   "text": "开头一\n开头二\n[@R1] 正文",
+   "expect": {
+    "segments": [
+     {
+      "role": 0,
+      "text": "开头一\n开头二",
+      "emotion": "follow"
+     },
+     {
+      "role": 1,
+      "text": " 正文",
+      "emotion": "follow"
+     }
+    ]
+   },
+   "ref_audios": 0
+  },
+  {
+   "id": "A6",
+   "group": "A",
+   "text": "[@R0]\n[@R1] 有字",
+   "expect": {
+    "segments": [
+     {
+      "role": 0,
+      "text": "",
+      "emotion": "follow"
+     },
+     {
+      "role": 1,
+      "text": " 有字",
+      "emotion": "follow"
+     }
+    ]
+   },
+   "ref_audios": 0
+  },
+  {
+   "id": "A7",
+   "group": "A",
+   "text": "[@R0] 有字\n[@R1]",
+   "expect": {
+    "segments": [
+     {
+      "role": 0,
+      "text": " 有字",
+      "emotion": "follow"
+     },
+     {
+      "role": 1,
+      "text": "",
+      "emotion": "follow"
+     }
+    ]
+   },
+   "ref_audios": 0
+  },
+  {
+   "id": "A8",
+   "group": "A",
+   "text": "[@R0] 甲\n[@R1] 乙\n[@R0] 丙",
+   "expect": {
+    "segments": [
+     {
+      "role": 0,
+      "text": " 甲",
+      "emotion": "follow"
+     },
+     {
+      "role": 1,
+      "text": " 乙",
+      "emotion": "follow"
+     },
+     {
+      "role": 0,
+      "text": " 丙",
+      "emotion": "follow"
+     }
+    ]
+   },
+   "ref_audios": 0
+  },
+  {
+   "id": "B1",
+   "group": "B",
+   "text": " [@R0]x",
+   "expect": {
+    "segments": [
+     {
+      "role": 0,
+      "text": " [@R0]x",
+      "emotion": "follow"
+     }
+    ],
+    "warnings": [
+     "INDENT:1"
+    ]
+   },
+   "ref_audios": 0
+  },
+  {
+   "id": "B2",
+   "group": "B",
+   "text": "\t[@R0]x",
+   "expect": {
+    "segments": [
+     {
+      "role": 0,
+      "text": "\t[@R0]x",
+      "emotion": "follow"
+     }
+    ],
+    "warnings": [
+     "INDENT:1"
+    ]
+   },
+   "ref_audios": 0
+  },
+  {
+   "id": "B3",
+   "group": "B",
+   "text": "　[@R0]x",
+   "expect": {
+    "segments": [
+     {
+      "role": 0,
+      "text": "　[@R0]x",
+      "emotion": "follow"
+     }
+    ],
+    "warnings": [
+     "INDENT:1"
+    ]
+   },
+   "ref_audios": 0
+  },
+  {
+   "id": "B4",
+   "group": "B",
+   "text": "［@R0]x",
+   "expect": {
+    "segments": [
+     {
+      "role": 0,
+      "text": "［@R0]x",
+      "emotion": "follow"
+     }
+    ],
+    "warnings": [
+     "FULLWIDTH:1"
+    ]
+   },
+   "ref_audios": 0
+  },
+  {
+   "id": "B5",
+   "group": "B",
+   "text": "abc[@R0]def",
+   "expect": {
+    "segments": [
+     {
+      "role": 0,
+      "text": "abc[@R0]def",
+      "emotion": "follow"
+     }
+    ]
+   },
+   "ref_audios": 0
+  },
+  {
+   "id": "B6",
+   "group": "B",
+   "text": "[[@R0]]x",
+   "expect": {
+    "segments": [
+     {
+      "role": 0,
+      "text": "[[@R0]]x",
+      "emotion": "follow"
+     }
+    ]
+   },
+   "ref_audios": 0
+  },
+  {
+   "id": "B7",
+   "group": "B",
+   "text": "﻿[@R0]x",
+   "expect": {
+    "segments": [
+     {
+      "role": 0,
+      "text": "x",
+      "emotion": "follow"
+     }
+    ]
+   },
+   "ref_audios": 0
+  },
+  {
+   "id": "C1",
+   "group": "C",
+   "text": "[@R0]x",
+   "expect": {
+    "segments": [
+     {
+      "role": 0,
+      "text": "x",
+      "emotion": "follow"
+     }
+    ],
+    "voice": {
+     "kind": "user",
+     "index": 0
+    }
+   },
+   "ref_audios": 3
+  },
+  {
+   "id": "C2",
+   "group": "C",
+   "text": "[@R2]x",
+   "expect": {
+    "segments": [
+     {
+      "role": 2,
+      "text": "x",
+      "emotion": "follow"
+     }
+    ],
+    "voice": {
+     "kind": "user",
+     "index": 2
+    }
+   },
+   "ref_audios": 3
+  },
+  {
+   "id": "C3",
+   "group": "C",
+   "text": "[@R3]x",
+   "expect": {
+    "segments": [
+     {
+      "role": 3,
+      "text": "x",
+      "emotion": "follow"
+     }
+    ],
+    "voice": {
+     "kind": "builtin",
+     "index": 3
+    }
+   },
+   "ref_audios": 3
+  },
+  {
+   "id": "C4",
+   "group": "C",
+   "text": "[@R10]x",
+   "expect": {
+    "segments": [
+     {
+      "role": 10,
+      "text": "x",
+      "emotion": "follow"
+     }
+    ],
+    "voice": {
+     "kind": "builtin",
+     "index": 0
+    }
+   },
+   "ref_audios": 3
+  },
+  {
+   "id": "C5",
+   "group": "C",
+   "text": "[@R13]x",
+   "expect": {
+    "segments": [
+     {
+      "role": 13,
+      "text": "x",
+      "emotion": "follow"
+     }
+    ],
+    "voice": {
+     "kind": "builtin",
+     "index": 3
+    }
+   },
+   "ref_audios": 3
+  },
+  {
+   "id": "C6",
+   "group": "C",
+   "text": "[@R99]x",
+   "expect": {
+    "segments": [
+     {
+      "role": 99,
+      "text": "x",
+      "emotion": "follow"
+     }
+    ],
+    "voice": {
+     "kind": "builtin",
+     "index": 9
+    }
+   },
+   "ref_audios": 3
+  },
+  {
+   "id": "C7",
+   "group": "C",
+   "text": "[@r2]x",
+   "expect": {
+    "segments": [
+     {
+      "role": 2,
+      "text": "x",
+      "emotion": "follow"
+     }
+    ],
+    "voice": {
+     "kind": "user",
+     "index": 2
+    }
+   },
+   "ref_audios": 3
+  },
+  {
+   "id": "C8",
+   "group": "C",
+   "text": "[@R01]x",
+   "expect": {
+    "segments": [
+     {
+      "role": 1,
+      "text": "x",
+      "emotion": "follow"
+     }
+    ],
+    "voice": {
+     "kind": "user",
+     "index": 1
+    }
+   },
+   "ref_audios": 3
+  },
+  {
+   "id": "C9",
+   "group": "C",
+   "text": "[@R0]x",
+   "expect": {
+    "segments": [
+     {
+      "role": 0,
+      "text": "x",
+      "emotion": "follow"
+     }
+    ],
+    "voice": {
+     "kind": "builtin",
+     "index": 0
+    }
+   },
+   "ref_audios": 0
+  },
+  {
+   "id": "C10",
+   "group": "C",
+   "text": "[@Rab]x",
+   "expect": {
+    "error": {
+     "code": "INVALID_ROLE",
+     "line": 1
+    }
+   },
+   "ref_audios": 3
+  },
+  {
+   "id": "C11",
+   "group": "C",
+   "text": "[@R1.5]x",
+   "expect": {
+    "error": {
+     "code": "INVALID_ROLE",
+     "line": 1
+    }
+   },
+   "ref_audios": 3
+  },
+  {
+   "id": "C12",
+   "group": "C",
+   "text": "[@R7]x",
+   "expect": {
+    "segments": [
+     {
+      "role": 7,
+      "text": "x",
+      "emotion": "follow"
+     }
+    ],
+    "voice": {
+     "kind": "builtin",
+     "index": 7
+    }
+   },
+   "ref_audios": 0
+  },
+  {
+   "id": "D1",
+   "group": "D",
+   "text": "[@R0]x",
+   "expect": {
+    "segments": [
+     {
+      "role": 0,
+      "text": "x",
+      "emotion": "follow"
+     }
+    ]
+   },
+   "ref_audios": 1
+  },
+  {
+   "id": "D2",
+   "group": "D",
+   "text": "[@R0:开心]x",
+   "expect": {
+    "segments": [
+     {
+      "role": 0,
+      "text": "x",
+      "emotion": {
+       "vector": {
+        "happy": 1.0
+       }
+      }
+     }
+    ]
+   },
+   "ref_audios": 1
+  },
+  {
+   "id": "D3",
+   "group": "D",
+   "text": "[@R0:happy]x",
+   "expect": {
+    "segments": [
+     {
+      "role": 0,
+      "text": "x",
+      "emotion": {
+       "vector": {
+        "happy": 1.0
+       }
+      }
+     }
+    ]
+   },
+   "ref_audios": 1
+  },
+  {
+   "id": "D4",
+   "group": "D",
+   "text": "[@R0:开心0.8]x",
+   "expect": {
+    "segments": [
+     {
+      "role": 0,
+      "text": "x",
+      "emotion": {
+       "vector": {
+        "happy": 0.8
+       }
+      }
+     }
+    ]
+   },
+   "ref_audios": 1
+  },
+  {
+   "id": "D5",
+   "group": "D",
+   "text": "[@R0:开心0.8+惊讶0.2]x",
+   "expect": {
+    "segments": [
+     {
+      "role": 0,
+      "text": "x",
+      "emotion": {
+       "vector": {
+        "happy": 0.8,
+        "surprised": 0.2
+       }
+      }
+     }
+    ]
+   },
+   "ref_audios": 1
+  },
+  {
+   "id": "D6",
+   "group": "D",
+   "text": "[@R0:愤怒+悲伤]x",
+   "expect": {
+    "segments": [
+     {
+      "role": 0,
+      "text": "x",
+      "emotion": {
+       "vector": {
+        "angry": 1.0,
+        "sad": 1.0
+       }
+      }
+     }
+    ],
+    "warnings": [
+     "SUM_OVER_0.8"
+    ]
+   },
+   "ref_audios": 1
+  },
+  {
+   "id": "D7",
+   "group": "D",
+   "text": "[@R0:发狂嘶吼]x",
+   "expect": {
+    "segments": [
+     {
+      "role": 0,
+      "text": "x",
+      "emotion": {
+       "text": "发狂嘶吼"
+      }
+     }
+    ]
+   },
+   "ref_audios": 1
+  },
+  {
+   "id": "D8",
+   "group": "D",
+   "text": "[@R0:melancholy]x",
+   "expect": {
+    "segments": [
+     {
+      "role": 0,
+      "text": "x",
+      "emotion": {
+       "vector": {
+        "melancholic": 1.0
+       }
+      }
+     }
+    ]
+   },
+   "ref_audios": 1
+  },
+  {
+   "id": "D9",
+   "group": "D",
+   "text": "[@R0:跟随]x",
+   "expect": {
+    "segments": [
+     {
+      "role": 0,
+      "text": "x",
+      "emotion": "follow"
+     }
+    ]
+   },
+   "ref_audios": 1
+  },
+  {
+   "id": "D10",
+   "group": "D",
+   "text": "[@R0:开心0.8+惊讶]x",
+   "expect": {
+    "segments": [
+     {
+      "role": 0,
+      "text": "x",
+      "emotion": {
+       "vector": {
+        "happy": 0.8,
+        "surprised": 1.0
+       }
+      }
+     }
+    ]
+   },
+   "ref_audios": 1
+  },
+  {
+   "id": "D11",
+   "group": "D",
+   "text": "[@R0:开心 喜悦]x",
+   "expect": {
+    "segments": [
+     {
+      "role": 0,
+      "text": "x",
+      "emotion": {
+       "text": "开心 喜悦"
+      }
+     }
+    ]
+   },
+   "ref_audios": 1
+  },
+  {
+   "id": "D12",
+   "group": "D",
+   "text": "[@R0:开心=0.8]x",
+   "expect": {
+    "error": {
+     "code": "EQ_SYNTAX",
+     "line": 1
+    }
+   },
+   "ref_audios": 1
+  },
+  {
+   "id": "D13",
+   "group": "D",
+   "text": "[@R0:开心1.5]x",
+   "expect": {
+    "error": {
+     "code": "WEIGHT_RANGE",
+     "line": 1
+    }
+   },
+   "ref_audios": 1
+  },
+  {
+   "id": "D14",
+   "group": "D",
+   "text": "[@R0:开心-0.5]x",
+   "expect": {
+    "error": {
+     "code": "WEIGHT_RANGE",
+     "line": 1
+    }
+   },
+   "ref_audios": 1
+  },
+  {
+   "id": "D15",
+   "group": "D",
+   "text": "[@R0:]x",
+   "expect": {
+    "segments": [
+     {
+      "role": 0,
+      "text": "x",
+      "emotion": "follow"
+     }
+    ]
+   },
+   "ref_audios": 1
+  },
+  {
+   "id": "D16",
+   "group": "D",
+   "text": "[@R0:文本:极度惊喜]x",
+   "expect": {
+    "segments": [
+     {
+      "role": 0,
+      "text": "x",
+      "emotion": {
+       "text": "文本:极度惊喜"
+      }
+     }
+    ]
+   },
+   "ref_audios": 1
+  },
+  {
+   "id": "E1",
+   "group": "E",
+   "text": "[@R0]  a  b",
+   "expect": {
+    "segments": [
+     {
+      "role": 0,
+      "text": "  a  b",
+      "emotion": "follow"
+     }
+    ]
+   },
+   "ref_audios": 0
+  },
+  {
+   "id": "E2",
+   "group": "E",
+   "text": "[@R0]\n甲\n乙\n丙",
+   "expect": {
+    "segments": [
+     {
+      "role": 0,
+      "text": "\n甲\n乙\n丙",
+      "emotion": "follow"
+     }
+    ]
+   },
+   "ref_audios": 0
+  },
+  {
+   "id": "E3",
+   "group": "E",
+   "text": "[@R0] 前\n\n后",
+   "expect": {
+    "segments": [
+     {
+      "role": 0,
+      "text": " 前\n\n后",
+      "emotion": "follow"
+     }
+    ]
+   },
+   "ref_audios": 0
+  },
+  {
+   "id": "E4",
+   "group": "E",
+   "text": "[@R0]\n甲",
+   "expect": {
+    "segments": [
+     {
+      "role": 0,
+      "text": "\n甲",
+      "emotion": "follow"
+     }
+    ]
+   },
+   "ref_audios": 0
+  },
+  {
+   "id": "E5",
+   "group": "E",
+   "text": "[@R0]   \n",
+   "expect": {
+    "segments": [
+     {
+      "role": 0,
+      "text": "",
+      "emotion": "follow"
+     }
+    ],
+    "warnings": [
+     "WHITESPACE_ONLY:1"
+    ]
+   },
+   "ref_audios": 0
+  },
+  {
+   "id": "E6",
+   "group": "E",
+   "text": "   \n  \n",
+   "expect": {
+    "error": {
+     "code": "EMPTY_TEXT",
+     "line": 1
+    }
+   },
+   "ref_audios": 0
+  },
+  {
+   "id": "F1",
+   "group": "F",
+   "text": "[@R0 无闭合",
+   "expect": {
+    "error": {
+     "code": "MARKER_UNCLOSED",
+     "line": 1
+    }
+   },
+   "ref_audios": 0
+  },
+  {
+   "id": "F2",
+   "group": "F",
+   "text": "[@R0]a]b",
+   "expect": {
+    "segments": [
+     {
+      "role": 0,
+      "text": "a]b",
+      "emotion": "follow"
+     }
+    ]
+   },
+   "ref_audios": 0
+  },
+  {
+   "id": "F3",
+   "group": "F",
+   "text": "[@R0:开心",
+   "expect": {
+    "error": {
+     "code": "MARKER_UNCLOSED",
+     "line": 1
+    }
+   },
+   "ref_audios": 0
+  },
+  {
+   "id": "F4",
+   "group": "F",
+   "text": "[@R0]x[@R1]y",
+   "expect": {
+    "segments": [
+     {
+      "role": 0,
+      "text": "x[@R1]y",
+      "emotion": "follow"
+     }
+    ]
+   },
+   "ref_audios": 0
+  },
+  {
+   "id": "F5",
+   "group": "F",
+   "text": "[@R0]\r\nx",
+   "expect": {
+    "segments": [
+     {
+      "role": 0,
+      "text": "\nx",
+      "emotion": "follow"
+     }
+    ]
+   },
+   "ref_audios": 0
+  },
+  {
+   "id": "F6",
+   "group": "F",
+   "text": "[@R0]  ",
+   "expect": {
+    "segments": [
+     {
+      "role": 0,
+      "text": "",
+      "emotion": "follow"
+     }
+    ],
+    "warnings": [
+     "WHITESPACE_ONLY:1"
+    ]
+   },
+   "ref_audios": 0
+  },
+  {
+   "id": "F7",
+   "group": "F",
+   "text": "",
+   "expect": {
+    "error": {
+     "code": "EMPTY_TEXT",
+     "line": 1
+    }
+   },
+   "ref_audios": 0
+  },
+  {
+   "id": "G1",
+   "group": "G",
+   "text": "[@R0]他在银<行|XING2>里",
+   "expect": {
+    "segments": [
+     {
+      "role": 0,
+      "text": "他在银<行|XING2>里",
+      "emotion": "follow"
+     }
+    ]
+   },
+   "ref_audios": 0
+  },
+  {
+   "id": "G2",
+   "group": "G",
+   "text": "[@R0][verse 1]",
+   "expect": {
+    "segments": [
+     {
+      "role": 0,
+      "text": "[verse 1]",
+      "emotion": "follow"
+     }
+    ]
+   },
+   "ref_audios": 0
+  },
+  {
+   "id": "G3",
+   "group": "G",
+   "text": "[@R0][pause=600]x",
+   "expect": {
+    "segments": [
+     {
+      "role": 0,
+      "text": "[pause=600]x",
+      "emotion": "follow"
+     }
+    ]
+   },
+   "ref_audios": 0
+  },
+  {
+   "id": "J1",
+   "group": "J",
+   "input": "none",
+   "expect": {
+    "len": 0
+   }
+  },
+  {
+   "id": "J2",
+   "group": "J",
+   "input": "single",
+   "expect": {
+    "len": 1
+   }
+  },
+  {
+   "id": "J3",
+   "group": "J",
+   "input": "batch3",
+   "expect": {
+    "len": 3
+   }
+  },
+  {
+   "id": "J4",
+   "group": "J",
+   "input": "list2",
+   "expect": {
+    "len": 2
+   }
+  },
+  {
+   "id": "J5",
+   "group": "J",
+   "input": "empty",
+   "expect": {
+    "len": 0
+   }
+  }
+ ],
+ "total": 64
+}
