@@ -6,7 +6,8 @@
     </linearGradient>
   </defs>
   <rect width="640" height="200" fill="url(#bg)"/>
-  <rect x="40" y="52" width="6" height="96" rx="3" fill="#22c55e"/>
-  <text x="66" y="96" font-family="Segoe UI, PingFang SC, sans-serif" font-size="40" font-weight="700" fill="#f9fafb">Comfy-IndexTTSLocalAPI</text>
-  <text x="66" y="136" font-family="Segoe UI, PingFang SC, sans-serif" font-size="22" fill="#9ca3af">剧本配音 · 多角色 · 多情绪 · 精确字幕</text>
+  <rect x="40" y="46" width="6" height="108" rx="3" fill="#22c55e"/>
+  <text x="66" y="82" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="34" font-weight="700" fill="#f9fafb">Comfy-IndexTTSLocalAPI</text>
+  <text x="66" y="118" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="21" fill="#e5e7eb">剧本配音 · Script Dubbing</text>
+  <text x="66" y="150" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="14" fill="#9ca3af">多角色 · 多情绪 · 精确字幕  |  Multi-role · Multi-emotion · Precise subtitles</text>
 </svg>
