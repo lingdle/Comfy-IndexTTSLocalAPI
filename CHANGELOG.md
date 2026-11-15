@@ -2,6 +2,11 @@
 
 版本规则：每次改动都升版本号。修 bug / 文案 → patch；行为或默认值变化 → minor；破坏兼容 → major。
 
+## 0.17.2
+
+- 内置音色包已发布：GitHub Release `voices-v1` 提供 `indextts-voices-8.zip`（8 个音色，4.77 MB）
+- `voices/manifest.json` 填入真实下载地址与 sha256，R2–R9 现在可以自动下载
+
 ## 0.17.1
 
 - 新增示例工作流 `example_workflows/Comfy-IndexTTSLocalAPI.json` 与截图，README 增加 Example 小节

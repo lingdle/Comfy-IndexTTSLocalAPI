@@ -6,7 +6,8 @@
   ],
   "archive": {
     "url": "https://github.com/lingdle/Comfy-IndexTTSLocalAPI/releases/download/voices-v1/indextts-voices-8.zip",
-    "sha256": ""
+    "sha256": "c76342e7c74c5a09dade09e501876490b550a2f2e595f89c95849eaa5b1c1164",
+    "bytes": 4767244
   },
   "builtin": [
     {
