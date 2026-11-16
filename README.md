@@ -5,8 +5,25 @@ English | [中文](#中文)
 ## Install
 
 1. Copy the Comfy-IndexTTSLocalAPI folder into ComfyUI/custom_nodes/
-2. Start your local IndexTTS WebUI (tested with index-tts v2.5.0-11-gd9e41aa, Gradio 5.45.0)
+2. Start the local IndexTTS WebUI (see below)
 3. Restart ComfyUI
+
+### Prerequisite: a local IndexTTS service
+
+This node does **not** bundle the model. It calls a locally running IndexTTS WebUI over HTTP.
+
+Official repository: https://github.com/index-tts/index-tts
+
+~~~bash
+git clone https://github.com/index-tts/index-tts.git
+cd index-tts
+# follow that repo's README to install dependencies and download the model
+python webui.py --fp16 --qwen_emo      # default address http://127.0.0.1:7860
+~~~
+
+- `--qwen_emo` is required for **free-text emotions** (e.g. `[@R0:raging]`); the 8 label emotions work without it
+- Tested with index-tts `v2.5.0-11-gd9e41aa` and Gradio `5.45.0`
+- If the WebUI runs on another port, change the node's `base_url`
 
 Requires a ComfyUI version with V3 nodes (comfy_api.latest).
 
@@ -106,8 +123,25 @@ Special thanks to the **IndexTTS** team for the model and the local WebUI.
 ### 安装
 
 1. 把 Comfy-IndexTTSLocalAPI 文件夹放进 ComfyUI/custom_nodes/
-2. 启动本地 IndexTTS WebUI（实测 index-tts v2.5.0-11-gd9e41aa，Gradio 5.45.0）
+2. 启动本地 IndexTTS WebUI（见下）
 3. 重启 ComfyUI
+
+#### 前置条件：本地 IndexTTS 服务
+
+本插件**不包含模型**，它通过 HTTP 调用本机运行的 IndexTTS WebUI。
+
+官方仓库：https://github.com/index-tts/index-tts
+
+~~~bash
+git clone https://github.com/index-tts/index-tts.git
+cd index-tts
+# 按该仓库 README 安装依赖、下载模型
+python webui.py --fp16 --qwen_emo      # 默认地址 http://127.0.0.1:7860
+~~~
+
+- `--qwen_emo` 是**自由描述情绪**（如 `[@R0:发狂嘶吼]`）的前提；8 个标签情绪不需要它
+- 实测版本：index-tts `v2.5.0-11-gd9e41aa`，Gradio `5.45.0`
+- 如果 WebUI 换了端口，改节点的 `base_url`
 
 需要支持 V3 节点的 ComfyUI 版本（comfy_api.latest）。
 
