@@ -11,6 +11,7 @@
 | [语法速查手册.md](语法速查手册.md) / [syntax-reference.md](syntax-reference.md) | 段标语法、情绪标签、错误码、FAQ |
 | [example-script.md](example-script.md) | 覆盖全部语法的 17 段样例剧本 |
 | [CHANGELOG.md](CHANGELOG.md) | 版本历史与版本规则 |
+| [docs/director-prompt.md](docs/director-prompt.md) | 给 Agent 的导演系统提示词 |
 | `draft/`（未入库） | 设计讨论、服务端参数清单、术语表 |
 
 **命名唯一依据是 `draft/术语表.md`**：新增名词先入表再使用，禁止临时起名。
