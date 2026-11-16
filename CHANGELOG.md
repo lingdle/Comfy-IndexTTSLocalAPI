@@ -2,6 +2,10 @@
 
 版本规则：每次改动都升版本号。修 bug / 文案 → patch；行为或默认值变化 → minor；破坏兼容 → major。
 
+## 1.0.6
+
+- 示例工作流目录 example_workflows/ 改为 example/workflows/（README、测试、打包脚本同步）
+
 ## 1.0.5
 
 - 新增 docs/director-prompt.md：给 Agent 的导演系统提示词（完整版 + 精简版 + 设计意图 + parser 校验示例）
@@ -55,7 +59,7 @@
 
 ## 0.17.1
 
-- 新增示例工作流 `example_workflows/Comfy-IndexTTSLocalAPI.json` 与截图，README 增加 Example 小节
+- 新增示例工作流 `example/workflows/Comfy-IndexTTSLocalAPI.json` 与截图，README 增加 Example 小节
 - 新增测试：示例工作流的节点/输入/控件值必须与 schema 一致
 
 ## 0.17.0

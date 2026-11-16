@@ -612,7 +612,7 @@ def test_synthesizer_passes_lang():
 
 
 def test_example_workflow_matches_schema():
-    workflow = json.loads((ROOT / "example_workflows" / "Comfy-IndexTTSLocalAPI.json").read_text(encoding="utf-8"))
+    workflow = json.loads((ROOT / "example" / "workflows" / "Comfy-IndexTTSLocalAPI.json").read_text(encoding="utf-8"))
     node = next(n for n in workflow["nodes"] if n["type"] == "IndexTTSLocalScriptDubbing")
     schema = _schema()
 

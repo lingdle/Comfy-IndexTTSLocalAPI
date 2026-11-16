@@ -102,9 +102,9 @@ Full explanation and coverage table: [example-script.md](example-script.md)
 
 ## Example
 
-![Comfy-IndexTTSLocalAPI workflow](example_workflows/Comfy-IndexTTSLocalAPI.png)
+![Comfy-IndexTTSLocalAPI workflow](example/workflows/Comfy-IndexTTSLocalAPI.png)
 
-Workflow file: [example_workflows/Comfy-IndexTTSLocalAPI.json](example_workflows/Comfy-IndexTTSLocalAPI.json)
+Workflow file: [example/workflows/Comfy-IndexTTSLocalAPI.json](example/workflows/Comfy-IndexTTSLocalAPI.json)
 
 Drag the JSON file onto the canvas, then point the four Load Audio nodes at your own reference voices.
 
@@ -220,9 +220,9 @@ python webui.py --fp16 --qwen_emo      # 默认地址 http://127.0.0.1:7860
 
 ### 示例
 
-![Comfy-IndexTTSLocalAPI 工作流](example_workflows/Comfy-IndexTTSLocalAPI.png)
+![Comfy-IndexTTSLocalAPI 工作流](example/workflows/Comfy-IndexTTSLocalAPI.png)
 
-工作流文件：[example_workflows/Comfy-IndexTTSLocalAPI.json](example_workflows/Comfy-IndexTTSLocalAPI.json)
+工作流文件：[example/workflows/Comfy-IndexTTSLocalAPI.json](example/workflows/Comfy-IndexTTSLocalAPI.json)
 
 把 JSON 拖进画布，再把四个「加载音频」换成你自己的参考音色即可。
 
