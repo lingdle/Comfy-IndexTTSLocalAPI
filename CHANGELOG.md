@@ -2,6 +2,10 @@
 
 版本规则：每次改动都升版本号。修 bug / 文案 → patch；行为或默认值变化 → minor；破坏兼容 → major。
 
+## 1.0.3
+
+- 新增 AGENTS.md：仓库定位、必读文档、常用命令、开发约定、发布流程
+
 ## 1.0.2
 
 - banner 改为双语（Comfy-IndexTTSLocalAPI / 剧本配音 · Script Dubbing）并修正第三行溢出；新增 scripts/bump_version.py
